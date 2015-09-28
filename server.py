@@ -21,12 +21,8 @@ class MyHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
         # File exists, serve it up
         SimpleHTTPServer.SimpleHTTPRequestHandler.do_GET(self);
     else:
-        # send index.html, but don't redirect
-        self.send_response(200)
-        self.send_header('Content-Type', 'text/html')  
-        self.end_headers()
-        with open(INDEXFILE, 'r') as fin:
-          self.copyfile(fin, self.wfile)
+        # send not found error
+        self.send_response(404)
  
 Handler = MyHandler
  

@@ -1,9 +1,42 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Report Builder</title>
-</head>
-<body>
+<html ng-app="reportBuilderApp">
+  <head>
+    <title>Report Builder</title>
 
-</body>
+    <link rel="stylesheet" type="text/css" href="assets/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/lib/jquery-ui/themes/smoothness/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/lib/font-awesome/css/font-awesome.min.css">
+
+    <script type="text/javascript" src="assets/lib/jquery/dist/jquery.min.js"></script>
+    <script src="assets/lib/jquery-ui/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="assets/lib/angular/angular.min.js"></script>
+    <script type="text/javascript" src="assets/app.js"></script>
+
+  </head>
+  <body>
+    <div ng-controller="BuilderCtrl" class="container-fluid">
+      <div class="row">
+        
+        <div class="col-md-3">
+          <ul id="toolbox" >
+            <li>
+              <i class="fa fa-font"></i>
+            </li>
+            <li>
+              <i class="fa fa-image"></i>
+            </li>
+            <li>
+              <i class="fa fa-table"></i>
+            </li>
+          </ul>
+        </div>
+
+        <div id="paper" class="col-md-6"></div>
+
+        <div class="col-md-3"></div>
+
+      </div>
+    </div>
+  </body>
 </html>
