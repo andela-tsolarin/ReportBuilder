@@ -1,4 +1,4 @@
-div#paper {
+div#page {
   height: 100vh;
   border: 1px solid #ccc;
   margin: 5px;
@@ -10,4 +10,5 @@ ul#toolbox {
 
 ul#toolbox li {
   list-style-type: none;
+  z-index: 10;
 }

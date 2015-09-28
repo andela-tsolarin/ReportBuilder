@@ -6,20 +6,27 @@ app.controller('BuilderCtrl', ['$scope', function($scope){
     helper: "clone"
   });
 
-  $( "#paper" ).droppable({
+  $( "#page" ).droppable({
+
     hoverClass: "ui-state-active",
     drop: function( event, ui ) {
 
-      var id = new Date().getTime();
-      $( "<span/>", {
-        id: id,
-        "class": "paper-child",
-        text: "Your text here",
-        style: "left: " + ui.position.left + "px; top: " + ui.position.top + "px;"
-      }).appendTo( $( this ) );
+      var droppedId = $( ui.draggable.context ).attr("id");
+      
+      if (droppedId == undefined) {
 
-      $( this ).find( "span#" + id ).draggable({ containment: "#paper", scroll: false });
+        var id = new Date().getTime();
+        $( "<span/>", {
+          id: id,
+          "class": "page-content",
+          text: "Your text here"
+        }).appendTo( $( this ) );
+
+        $( this ).find( "span#" + id ).draggable({ containment: "#page", scroll: false });
+        
+      }
     }
+
   });
   
 }]);
