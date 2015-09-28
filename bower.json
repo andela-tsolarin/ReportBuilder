@@ -1,0 +1,24 @@
+{
+  "name": "ReportBuilder",
+  "version": "1.0.0",
+  "homepage": "https://github.com/andela-tsolarin/ReportBuilder",
+  "authors": [
+    "Toni Solarin-Sodara <toni.edward@outlook.com>"
+  ],
+  "description": "A visual drag and drop report builder",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "assets/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.6",
+    "jquery": "~2.1.4",
+    "bootstrap": "~3.3.5",
+    "jquery-ui": "~1.11.4"
+  }
+}
