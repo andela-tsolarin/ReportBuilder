@@ -1,4 +1,4 @@
-var app = angular.module('reportBuilderApp', []);
+var app = angular.module('reportBuilderApp', ['colorpicker.module']);
 
 app.controller('BuilderCtrl', ['$scope', function($scope) {
 
@@ -41,11 +41,12 @@ app.controller('BuilderCtrl', ['$scope', function($scope) {
   });
 
   var toCssModel = function(element) {
-    
+
     $scope.properties = {
       text: element.text(),
       css: {
-        "font-size": parseInt(element.css("font-size").replace("px",""))
+        "font-size": parseInt(element.css("font-size").replace("px","")),
+        "color": element.css("color")
       }
     };
 

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="assets/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/lib/angular-bootstrap-colorpicker/css/colorpicker.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="assets/lib/jquery-ui/themes/smoothness/jquery-ui.min.css">
     <link rel="stylesheet" type="text/css" href="assets/lib/font-awesome/css/font-awesome.min.css">
@@ -13,6 +14,7 @@
     <script type="text/javascript" src="assets/lib/jquery/dist/jquery.min.js"></script>
     <script src="assets/lib/jquery-ui/jquery-ui.min.js"></script>
     <script type="text/javascript" src="assets/lib/angular/angular.min.js"></script>
+    <script type="text/javascript" src="assets/lib/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.min.js"></script>
     <script type="text/javascript" src="assets/js/schema.js"></script>
     <script type="text/javascript" src="assets/app.js"></script>
 
@@ -50,6 +52,11 @@
             <div class="form-group">
               <label for="size">Font Size</label>
               <input type="number" class="form-control" id="size" name="size" ng-model="properties.css['font-size']" ng-change="toCss()" />
+            </div>
+
+            <div class="form-group">
+              <label for="color">Color</label>
+              <input colorpicker="rgb" type="text" class="form-control" id="color" name="color" ng-model="properties.css['color']" ng-change="toCss()" readonly="" />
             </div>
 
           </form>
