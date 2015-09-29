@@ -13,3 +13,7 @@ ul#toolbox li {
   list-style-type: none;
   z-index: 10;
 }
+
+#properties {
+  padding-top: 15px;
+}

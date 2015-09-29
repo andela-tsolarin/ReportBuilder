@@ -3,6 +3,8 @@
   <head>
     <title>Report Builder</title>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" type="text/css" href="assets/lib/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="assets/lib/jquery-ui/themes/smoothness/jquery-ui.min.css">
@@ -37,7 +39,21 @@
           <div id="page"></div>
         </div>
 
-        <div class="col-md-3"></div>
+        <div id="properties" class="col-md-3">
+          <form id="customize">
+
+            <div class="form-group">
+              <label for="name">Text</label>
+              <input type="text" class="form-control" id="name" name="name" ng-model="properties.text" ng-change="toCss()" />
+            </div>
+
+            <div class="form-group">
+              <label for="size">Font Size</label>
+              <input type="number" class="form-control" id="size" name="size" ng-model="properties.css['font-size']" ng-change="toCss()" />
+            </div>
+
+          </form>
+        </div>
 
       </div>
     </div>

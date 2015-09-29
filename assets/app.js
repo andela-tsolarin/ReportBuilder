@@ -2,6 +2,11 @@ var app = angular.module('reportBuilderApp', []);
 
 app.controller('BuilderCtrl', ['$scope', function($scope) {
 
+  var selected = null;
+  $scope.properties = {};
+
+  $scope.$watch('css', function() { } );
+
   $( "#toolbox li" ).draggable({
     helper: "clone"
   });
@@ -17,6 +22,7 @@ app.controller('BuilderCtrl', ['$scope', function($scope) {
       if (droppedId == undefined && schema[droppedType]) {
 
         var element = $( "<" + schema[droppedType].tag + "/>", schema[droppedType].attributes );
+
         $( this ).append(element);
         var id = element.attr("id");
 
@@ -25,12 +31,32 @@ app.controller('BuilderCtrl', ['$scope', function($scope) {
           .draggable({ containment: "#page", scroll: false });
 
         $( ".page-element" ).mousedown(function(){
-          
+          selected = $( this );
+          toCssModel(selected);
         });
       }
 
     }
 
   });
+
+  var toCssModel = function(element) {
+    
+    $scope.properties = {
+      text: element.text(),
+      css: {
+        "font-size": parseInt(element.css("font-size").replace("px",""))
+      }
+    };
+
+    $scope.$apply();
+  };
+
+  $scope.toCss = function() {
+    selected.text($scope.properties.text);
+    for (var prop in $scope.properties.css) {
+      selected.css(prop, $scope.properties.css[prop]);
+    }
+  };
   
 }]);
