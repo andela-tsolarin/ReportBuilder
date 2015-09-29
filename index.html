@@ -44,6 +44,10 @@
         <div id="properties" class="col-md-3">
           <form id="customize">
 
+            <p>
+              <i id="deleteElement" ng-if="selected" ng-click="trash()" class="fa fa-trash"></i>
+            </p>
+
             <div class="form-group">
               <label for="name">Text</label>
               <input type="text" class="form-control" id="name" name="name" ng-model="properties.text" ng-change="toCss()" />

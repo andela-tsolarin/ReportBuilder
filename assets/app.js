@@ -2,7 +2,7 @@ var app = angular.module('reportBuilderApp', ['colorpicker.module']);
 
 app.controller('BuilderCtrl', ['$scope', function($scope) {
 
-  var selected = null;
+  $scope.selected = null;
   $scope.properties = {};
 
   $scope.$watch('css', function() { } );
@@ -31,8 +31,8 @@ app.controller('BuilderCtrl', ['$scope', function($scope) {
           .draggable({ containment: "#page", scroll: false });
 
         $( ".page-element" ).mousedown(function(){
-          selected = $( this );
-          toCssModel(selected);
+          $scope.selected = $( this );
+          toCssModel();
         });
       }
 
@@ -40,13 +40,13 @@ app.controller('BuilderCtrl', ['$scope', function($scope) {
 
   });
 
-  var toCssModel = function(element) {
+  var toCssModel = function() {
 
     $scope.properties = {
-      text: element.text(),
+      text: $scope.selected.text(),
       css: {
-        "font-size": parseInt(element.css("font-size").replace("px","")),
-        "color": element.css("color")
+        "font-size": parseInt($scope.selected.css("font-size").replace("px","")),
+        "color": $scope.selected.css("color")
       }
     };
 
@@ -54,10 +54,16 @@ app.controller('BuilderCtrl', ['$scope', function($scope) {
   };
 
   $scope.toCss = function() {
-    selected.text($scope.properties.text);
+    $scope.selected.text($scope.properties.text);
     for (var prop in $scope.properties.css) {
-      selected.css(prop, $scope.properties.css[prop]);
+      $scope.selected.css(prop, $scope.properties.css[prop]);
     }
+  };
+
+  $scope.trash = function() {
+    $scope.selected.remove();
+    $scope.selected = null;
+    $scope.properties = {};
   };
   
 }]);
