@@ -7,24 +7,24 @@ app.controller('BuilderCtrl', ['$scope', function($scope){
   });
 
   $( "#page" ).droppable({
-
-    hoverClass: "ui-state-active",
+    
     drop: function( event, ui ) {
 
-      var droppedId = $( ui.draggable.context ).attr("id");
+      var droppedElement = $( ui.draggable.context );
+      var droppedId = droppedElement.attr("id");
+      var droppedType = droppedElement.attr("tool-type");
       
-      if (droppedId == undefined) {
+      if (droppedId == undefined && schema[droppedType]) {
 
-        var id = new Date().getTime();
-        $( "<span/>", {
-          id: id,
-          "class": "page-content",
-          text: "Your text here"
-        }).appendTo( $( this ) );
+        var element = $( schema[droppedType].tag, schema[droppedType].attributes );
+        $( this ).append(element);
+        var id = element.attr("id");
 
-        $( this ).find( "span#" + id ).draggable({ containment: "#page", scroll: false });
-        
+        $( this )
+          .find( "span#" + id )
+          .draggable({ containment: "#page", scroll: false });
       }
+
     }
 
   });
