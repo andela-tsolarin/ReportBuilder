@@ -12,6 +12,11 @@ ul#toolbox {
 ul#toolbox li {
   list-style-type: none;
   z-index: 10;
+  cursor: pointer;
+}
+
+.page-element {
+  cursor: pointer;
 }
 
 #properties {
