@@ -3,7 +3,7 @@ var schema = {
     tag: "<span/>",
     attributes: {
       id: new Date().getTime(),
-      "class": "page-content",
+      "class": "page-element",
       text: "Your text here",
       datatype: "text",
       contenteditable: true

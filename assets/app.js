@@ -1,13 +1,13 @@
 var app = angular.module('reportBuilderApp', []);
 
-app.controller('BuilderCtrl', ['$scope', function($scope){
+app.controller('BuilderCtrl', ['$scope', function($scope) {
 
   $( "#toolbox li" ).draggable({
     helper: "clone"
   });
 
   $( "#page" ).droppable({
-    
+
     drop: function( event, ui ) {
 
       var droppedElement = $( ui.draggable.context );
