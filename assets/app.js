@@ -23,6 +23,10 @@ app.controller('BuilderCtrl', ['$scope', function($scope) {
         $( this )
           .find( "span#" + id )
           .draggable({ containment: "#page", scroll: false });
+
+        $( ".page-element" ).mousedown(function(){
+          
+        });
       }
 
     }
