@@ -1,6 +1,6 @@
 var schema = {
   text: {
-    tag: "<span/>",
+    tag: "span",
     attributes: {
       id: new Date().getTime(),
       "class": "page-element",

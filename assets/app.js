@@ -16,12 +16,12 @@ app.controller('BuilderCtrl', ['$scope', function($scope) {
       
       if (droppedId == undefined && schema[droppedType]) {
 
-        var element = $( schema[droppedType].tag, schema[droppedType].attributes );
+        var element = $( "<" + schema[droppedType].tag + "/>", schema[droppedType].attributes );
         $( this ).append(element);
         var id = element.attr("id");
 
         $( this )
-          .find( "span#" + id )
+          .find( schema[droppedType].tag + "#" + id )
           .draggable({ containment: "#page", scroll: false });
 
         $( ".page-element" ).mousedown(function(){
