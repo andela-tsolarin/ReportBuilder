@@ -20,6 +20,17 @@ var schema = {
       datatype: "image",
       contenteditable: true
     }
+  },
+
+  box: {
+    tag: "div",
+    attributes: {
+      id: new Date().getTime(),
+      style: "border: 1px solid #333; height: 50px; width: 50px;",
+      "class": "page-element",
+      datatype: "box",
+      contenteditable: true
+    }
   }
 
 };

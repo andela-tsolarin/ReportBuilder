@@ -27,9 +27,14 @@ app.controller('BuilderCtrl', ['$scope', function($scope) {
         $( this ).append(element);
         var id = element.attr("id");
 
-        $( this )
-          .find( schema[droppedType].tag + "#" + id )
-          .draggable({ containment: "#page", scroll: false });
+        element = $( this )
+                    .find( schema[droppedType].tag + "#" + id );
+
+        element.draggable({ containment: "#page", scroll: false });
+
+        if (droppedType == "box") {
+          element.resizable();
+        }
 
         $( ".page-element" ).mousedown(function(){
           $scope.selected = $( this );
