@@ -3,6 +3,7 @@ var app = angular.module('reportBuilderApp', ['colorpicker.module']);
 app.controller('BuilderCtrl', ['$scope', function($scope) {
 
   $scope.selected = null;
+  $scope.datatype = null;
   $scope.properties = {};
 
   $scope.$watch('css', function() { } );
@@ -32,6 +33,7 @@ app.controller('BuilderCtrl', ['$scope', function($scope) {
 
         $( ".page-element" ).mousedown(function(){
           $scope.selected = $( this );
+          $scope.datatype = $scope.selected.attr("datatype");
           toCssModel();
         });
       }
@@ -46,7 +48,12 @@ app.controller('BuilderCtrl', ['$scope', function($scope) {
       text: $scope.selected.text(),
       css: {
         "font-size": parseInt($scope.selected.css("font-size").replace("px","")),
-        "color": $scope.selected.css("color")
+        "color": $scope.selected.css("color"),
+        "width": parseInt($scope.selected.css("width").replace("px","")),
+        "height": parseInt($scope.selected.css("height").replace("px",""))
+      },
+      attr: {
+        "src": $scope.selected.attr("src")
       }
     };
 
@@ -55,14 +62,20 @@ app.controller('BuilderCtrl', ['$scope', function($scope) {
 
   $scope.toCss = function() {
     $scope.selected.text($scope.properties.text);
+
     for (var prop in $scope.properties.css) {
       $scope.selected.css(prop, $scope.properties.css[prop]);
+    }
+
+    for (var attr in $scope.properties.attr) {
+      $scope.selected.attr(attr, $scope.properties.attr[attr]);
     }
   };
 
   $scope.trash = function() {
     $scope.selected.remove();
     $scope.selected = null;
+    $scope.datatype = null;
     $scope.properties = {};
   };
   

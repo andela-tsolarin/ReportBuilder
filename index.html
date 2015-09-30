@@ -48,19 +48,42 @@
               <i id="deleteElement" ng-if="selected" ng-click="trash()" class="fa fa-trash"></i>
             </p>
 
-            <div class="form-group">
-              <label for="name">Text</label>
+            <div class="form-group" ng-if="datatype == 'text'">
+              <label for="name">Text:</label>
               <input type="text" class="form-control" id="name" name="name" ng-model="properties.text" ng-change="toCss()" />
             </div>
 
-            <div class="form-group">
-              <label for="size">Font Size</label>
+            <div class="form-group" ng-if="datatype == 'text'">
+              <label for="size">Font Size:</label>
               <input type="number" class="form-control" id="size" name="size" ng-model="properties.css['font-size']" ng-change="toCss()" />
             </div>
 
-            <div class="form-group">
-              <label for="color">Color</label>
+            <div class="form-group" ng-if="datatype == 'text'">
+              <label for="color">Color:</label>
               <input colorpicker="rgb" type="text" class="form-control" id="color" name="color" ng-model="properties.css['color']" ng-change="toCss()" readonly="" />
+            </div>
+
+            <div class="row">
+
+              <div class="col-md-6">
+                <div class="form-group" ng-if="datatype == 'image'">
+                  <label for="width">Width:</label>
+                  <input type="number" class="form-control" id="width" name="width" ng-model="properties.css['width']" ng-change="toCss()" />
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group" ng-if="datatype == 'image'">
+                  <label for="height">Height:</label>
+                  <input type="number" class="form-control" id="height" name="height" ng-model="properties.css['height']" ng-change="toCss()" />
+                </div>
+              </div>
+
+            </div>
+
+            <div class="form-group" ng-if="datatype == 'image'">
+              <label for="src">Image Url:</label>
+              <input type="text" class="form-control" id="src" name="src" ng-model="properties.attr['src']" ng-change="toCss()" />
             </div>
 
           </form>

@@ -1,4 +1,5 @@
 var schema = {
+
   text: {
     tag: "span",
     attributes: {
@@ -8,5 +9,17 @@ var schema = {
       datatype: "text",
       contenteditable: true
     }
+  },
+
+  image: {
+    tag: "img",
+    attributes: {
+      id: new Date().getTime(),
+      "class": "page-element",
+      src: "/assets/img/ui.jpeg",
+      datatype: "image",
+      contenteditable: true
+    }
   }
+
 };
