@@ -16,25 +16,29 @@ app.controller('BuilderCtrl', ['$scope', function($scope) {
 
     drop: function( event, ui ) {
 
+      var offset = $(this).offset(),
+          x = event.pageX - offset.left,
+          y = event.pageY - offset.top; 
+
       var droppedElement = $( ui.draggable.context );
       var droppedId = droppedElement.attr("id");
       var droppedType = droppedElement.attr("tool-type");
       
       if (droppedId == undefined && schema[droppedType]) {
 
-        var element = $( "<" + schema[droppedType].tag + "/>", schema[droppedType].attributes );
+        var element = $( "<" + schema[droppedType].tag + "/>", schema[droppedType].attributes )
+                        .css({
+                            "position": "absolute",
+                            "left": x,
+                            "top": y
+                          });
 
         $( this ).append(element);
         var id = element.attr("id");
 
         element = $( this )
-                    .find( schema[droppedType].tag + "#" + id );
-
-        element.draggable({ containment: "#page", scroll: false });
-
-        if (droppedType == "box") {
-          element.resizable();
-        }
+                    .find( schema[droppedType].tag + "#" + id )
+                    .draggable({ containment: "#page", scroll: false });
 
         $( ".page-element" ).mousedown(function(){
           $scope.selected = $( this );
