@@ -91,8 +91,35 @@
             </div>
 
             <div class="form-group" ng-if="datatype == 'image'">
-              <label for="src">Image Url:</label>
-              <input type="text" class="form-control" id="src" name="src" ng-model="properties.attr['src']" ng-change="toCss()" />
+              <label for="src">Image:</label>
+              <input type="text" class="form-control" ng-hide="true" id="src" name="src" ng-model="properties.attr['src']" ng-change="toCss()" />
+              <input type="file" id="img" name="img" />
+              <script type="text/javascript">
+
+                var readFile = function(input) {
+
+                  var formats = ['image/jpeg', 'image/jpg', 'image/gif', 'image/png'];
+                  if (input.files && input.files[0]) {
+                        
+                    var file = input.files[0];
+                    
+                    var reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                      var data = e.target.result;
+                      $( "#src" ).val(data);
+                      $( "#src" ).change();
+                    }
+                    
+                    reader.readAsDataURL(input.files[0]);
+                  }
+                };
+
+                $("#img").change(function() {
+                  readFile(this);
+                });
+                
+              </script>
             </div>
 
           </form>

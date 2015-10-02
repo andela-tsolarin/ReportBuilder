@@ -266,21 +266,5 @@ app.controller('BuilderCtrl', ['$scope', function($scope) {
     $scope.selected.remove();
     clearSelection();
   };
-
-  var readFile = function(input) {
-    if (input.files && input.files[0]) {
-          
-      var file = input.files[0];
-      
-      var reader = new FileReader();
-      
-      reader.onload = function(e) {
-        var data = e.target.result;
-        $( "#src" ).val(data);
-      }
-      
-      reader.readAsDataURL(input.files[0]);
-    }
-  };
   
 }]);
