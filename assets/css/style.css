@@ -13,7 +13,14 @@ ul#toolbox li {
   list-style-type: none;
   z-index: 10;
   cursor: pointer;
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
+
+  ul#toolbox li i {
+    font-size: 18px;
+  }
 
 .page-element {
   cursor: move;
