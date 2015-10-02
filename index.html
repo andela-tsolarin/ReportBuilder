@@ -67,7 +67,7 @@
 
             <div class="form-group" ng-if="datatype == 'text'">
               <label for="size">Font Size:</label>
-              <input type="number" class="form-control" id="size" name="size" ng-model="properties.css['font-size']" ng-change="toCss()" />
+              <input type="number" min="1" class="form-control" id="size" name="size" ng-model="properties.css['font-size']" ng-change="toCss()" />
             </div>
 
             <div class="form-group" ng-if="datatype == 'text'">
@@ -80,14 +80,14 @@
               <div class="col-md-6">
                 <div class="form-group" ng-if="datatype == 'image' || datatype == 'text' || datatype == 'box' || datatype == 'table'">
                   <label for="width">Width:</label>
-                  <input type="number" class="form-control" id="width" name="width" ng-model="properties.css['width']" ng-change="toCss()" />
+                  <input type="number" min="1" class="form-control" id="width" name="width" ng-model="properties.css['width']" ng-change="toCss()" />
                 </div>
               </div>
 
               <div class="col-md-6">
                 <div class="form-group" ng-if="datatype == 'image' || datatype == 'text' || datatype == 'box' || datatype == 'table'">
                   <label for="height">Height:</label>
-                  <input type="number" class="form-control" id="height" name="height" ng-model="properties.css['height']" ng-change="toCss()" />
+                  <input type="number" min="1" class="form-control" id="height" name="height" ng-model="properties.css['height']" ng-change="toCss()" />
                 </div>
               </div>
 
