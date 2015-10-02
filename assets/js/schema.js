@@ -15,7 +15,7 @@ var schema = {
     attributes: {
       id: new Date().getTime(),
       "class": "page-element",
-      src: "/assets/img/placeholder.jpg",
+      src: "assets/img/placeholder.jpg",
       datatype: "image"
     }
   },
