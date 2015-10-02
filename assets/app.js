@@ -145,6 +145,7 @@ app.controller('BuilderCtrl', ['$scope', function($scope) {
                         });
 
         $( this ).append(element);
+
         var id = element.attr("id");
 
         element = $( this )
@@ -238,6 +239,7 @@ app.controller('BuilderCtrl', ['$scope', function($scope) {
 
   var toCssModel = function() {
 
+    var id = $scope.selected.attr("id");
     $scope.properties = {
       text: $scope.selected.text(),
       css: {
@@ -252,9 +254,11 @@ app.controller('BuilderCtrl', ['$scope', function($scope) {
     };
 
     if ($scope.datatype == 'table') {
+      var rows = $("#" + id + " tr").length;
+      var cols = $("#" + id + " tr:first td").length;
       var id = $scope.selected.attr("id");
-      $scope.properties.rows = $("#" + id + " tr").length;
-      $scope.properties.cols = $("#" + id + " tr:first td").length;
+      $scope.properties["rows"] = rows == 0 ? 2 : rows;
+      $scope.properties["cols"] = cols == 0 ? 2 : cols;
     }
 
     $scope.$apply();
@@ -272,7 +276,12 @@ app.controller('BuilderCtrl', ['$scope', function($scope) {
     }
 
     if ($scope.datatype == 'table') {
-      
+
+      if ($scope.selected.rows == undefined) {
+        $scope.selected.rows = 2;
+        $scope.selected.cols = 2;
+      }
+
       var id = $scope.selected.attr("id");
       var nrows = $scope.properties.rows;
       var ncols = $scope.properties.cols;
