@@ -35,7 +35,7 @@ var schema = {
     attributes: {
       id: new Date().getTime(),
       border: "1",
-      html: "<tr><td></td><td></td><td></td></tr>",
+      html: "<tr><td></td><td></td></tr><tr><td></td><td></td></tr>",
       style: "height: 100px; width: 100px; table-layout: fixed;",
       "class": "page-element",
       datatype: "table"
