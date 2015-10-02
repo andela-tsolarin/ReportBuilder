@@ -16,7 +16,7 @@ ul#toolbox li {
 }
 
 .page-element {
-  cursor: pointer;
+  cursor: move;
 }
 
 #properties {
@@ -27,3 +27,31 @@ ul#toolbox li {
   font-size: 18px;
   cursor: pointer;
 }
+
+.selected {
+  padding: 3px;
+  border: 1px dotted #ccc;
+}
+
+.resize-handle {
+  width: 8px;
+  height: 8px;
+  border: 1px solid #333;
+  display: none;
+}
+
+  .resize-handle[direction=north] {
+    cursor: n-resize;
+  }
+
+  .resize-handle[direction=south] {
+    cursor: s-resize;
+  }
+
+  .resize-handle[direction=west] {
+    cursor: w-resize;
+  }
+
+  .resize-handle[direction=east] {
+    cursor: e-resize;
+  }

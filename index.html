@@ -24,6 +24,7 @@
       <div class="row">
         
         <div class="col-md-1">
+
           <ul id="toolbox" >
             <li tool-type="text">
               <i class="fa fa-font"></i>
@@ -35,10 +36,18 @@
               <i class="fa fa-square-o"></i>
             </li>
           </ul>
+
         </div>
 
         <div class="col-md-8">
-          <div id="page"></div>
+          <div id="page">
+            <div id="resize-handles">
+              <div class="resize-handle" direction="north"></div>
+              <div class="resize-handle" direction="south"></div>
+              <div class="resize-handle" direction="west"></div>
+              <div class="resize-handle" direction="east"></div>
+            </div>
+          </div>
         </div>
 
         <div id="properties" class="col-md-3">
@@ -66,14 +75,14 @@
             <div class="row">
 
               <div class="col-md-6">
-                <div class="form-group" ng-if="datatype == 'image'">
+                <div class="form-group" ng-if="datatype == 'image' || datatype == 'text' || datatype == 'box'">
                   <label for="width">Width:</label>
                   <input type="number" class="form-control" id="width" name="width" ng-model="properties.css['width']" ng-change="toCss()" />
                 </div>
               </div>
 
               <div class="col-md-6">
-                <div class="form-group" ng-if="datatype == 'image'">
+                <div class="form-group" ng-if="datatype == 'image' || datatype == 'text' || datatype == 'box'">
                   <label for="height">Height:</label>
                   <input type="number" class="form-control" id="height" name="height" ng-model="properties.css['height']" ng-change="toCss()" />
                 </div>
