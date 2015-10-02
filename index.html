@@ -35,6 +35,9 @@
             <li tool-type="box">
               <i class="fa fa-square-o"></i>
             </li>
+            <li tool-type="table">
+              <i class="fa fa-table"></i>
+            </li>
           </ul>
 
         </div>
@@ -75,16 +78,34 @@
             <div class="row">
 
               <div class="col-md-6">
-                <div class="form-group" ng-if="datatype == 'image' || datatype == 'text' || datatype == 'box'">
+                <div class="form-group" ng-if="datatype == 'image' || datatype == 'text' || datatype == 'box' || datatype == 'table'">
                   <label for="width">Width:</label>
                   <input type="number" class="form-control" id="width" name="width" ng-model="properties.css['width']" ng-change="toCss()" />
                 </div>
               </div>
 
               <div class="col-md-6">
-                <div class="form-group" ng-if="datatype == 'image' || datatype == 'text' || datatype == 'box'">
+                <div class="form-group" ng-if="datatype == 'image' || datatype == 'text' || datatype == 'box' || datatype == 'table'">
                   <label for="height">Height:</label>
                   <input type="number" class="form-control" id="height" name="height" ng-model="properties.css['height']" ng-change="toCss()" />
+                </div>
+              </div>
+
+            </div>
+
+            <div class="row" ng-if="datatype == 'table'">
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="width">Rows:</label>
+                  <input type="number" class="form-control" id="width" name="width" ng-model="properties['rows']" ng-change="toCss()" />
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="height">Columns:</label>
+                  <input type="number" class="form-control" id="height" name="height" ng-model="properties['cols']" ng-change="toCss()" />
                 </div>
               </div>
 

@@ -28,6 +28,18 @@ var schema = {
       "class": "page-element",
       datatype: "box"
     }
+  },
+
+  table: {
+    tag: "table",
+    attributes: {
+      id: new Date().getTime(),
+      border: "1",
+      html: "<tr><td></td><td></td><td></td></tr>",
+      style: "height: 100px; width: 100px; table-layout: fixed;",
+      "class": "page-element",
+      datatype: "table"
+    }
   }
 
 };

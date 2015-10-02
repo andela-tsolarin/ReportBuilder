@@ -8,6 +8,10 @@ app.controller('BuilderCtrl', ['$scope', function($scope) {
 
   $scope.$watch('css', function() { } );
 
+  $( ".resize-handle" ).click(function(event){
+    event.stopPropagation();
+  });
+
   $( "#toolbox li" ).draggable({
     helper: "clone"
   });
@@ -135,7 +139,7 @@ app.controller('BuilderCtrl', ['$scope', function($scope) {
         var element = $( "<" + schema[droppedType].tag + "/>", schema[droppedType].attributes )
                       .css({
                           "position": "absolute",
-                          "overflow": "hidden",
+                          "overflow": "scroll",
                           "left": x,
                           "top": y
                         });
@@ -247,6 +251,12 @@ app.controller('BuilderCtrl', ['$scope', function($scope) {
       }
     };
 
+    if ($scope.datatype == 'table') {
+      var id = $scope.selected.attr("id");
+      $scope.properties.rows = $("#" + id + " tr").length;
+      $scope.properties.cols = $("#" + id + " tr:first td").length;
+    }
+
     $scope.$apply();
   };
 
@@ -260,6 +270,34 @@ app.controller('BuilderCtrl', ['$scope', function($scope) {
     for (var attr in $scope.properties.attr) {
       $scope.selected.attr(attr, $scope.properties.attr[attr]);
     }
+
+    if ($scope.datatype == 'table') {
+      
+      var id = $scope.selected.attr("id");
+      var nrows = $scope.properties.rows;
+      var ncols = $scope.properties.cols;
+
+      var orows = $("#" + id + " tr").length;
+      var ocols = $("#" + id + " tr:first td").length;
+
+      if (orows < nrows) {
+        var drows = nrows - orows;
+        var html = "";
+        for (var i = 0; i < drows; i++) {
+
+          html += "<tr>";
+
+          for (var j = 0; j < ncols; j++) {
+            html += "<td></td>";
+          }
+
+          html += "</tr>";
+        }
+
+        $scope.selected.append(html);
+      }
+    }
+
   };
 
   $scope.trash = function() {
